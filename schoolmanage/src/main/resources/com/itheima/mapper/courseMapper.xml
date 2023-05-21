@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itheima.mapper.courseMapper">
+    <insert id="updatainsert">
+        insert
+        into s_student(name,hours,sid)
+        values (#{name},#{hours},#{sid});
+
+    </insert>
+    <update id="updata">
+        update s_student
+        set hours=#{hours}
+        where id=#{id};
+    </update>
+
+
+    <select id="select01" resultType="com.itheima.pojo.course">
+        select *
+        from s_student
+        where id="2";
+    </select>
+
+
+    <select id="select02" resultType="com.itheima.pojo.course2">
+        select name,hours,sid,schoolname,s_student.id
+<!--        select *-->
+        from s_school,s_student
+        where s_student.sid = s_school.id
+        and sid='1';
+
+    </select>
+    <select id="select05" resultType="com.itheima.pojo.course2">
+        select name,hours,sid,schoolname,s_student.id
+        from s_school,s_student
+        where s_student.sid = s_school.id;
+    </select>
+
+
+</mapper>
